@@ -2,7 +2,6 @@ package com.waether.app.feature.randomizer
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Assert
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 
