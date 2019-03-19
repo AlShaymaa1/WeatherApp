@@ -9,9 +9,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
-import java.util.function.Consumer
 import org.reactivestreams.Subscription
 
 
@@ -30,22 +30,23 @@ class Ticker()
 //    override fun onFinish() {
 //    }
 
-    fun timer(onTicking: (Long) -> Unit) {
-        val subscription = Observable.interval(FINISH_AFTER_MILLIS, INTERVAL_IN_MILLIS, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .repeat()
-          // .subscribe { Consumer<Long>(onTicking(it)) }
-//                     // here is the task that should repeat
+
+
+          // .subscribe (Consumer{onTicking(it)})
+                     // here is the task that should repeat
 //                     onTicking(it)
 //                 Log.e("error",it.toString())
 
 
         val disposable: CompositeDisposable = CompositeDisposable()
      //   disposable.add(subscription)
-    }
+
 
 
 }
+fun timerFun()=
+    Observable.interval(FINISH_AFTER_MILLIS, INTERVAL_IN_MILLIS, TimeUnit.MILLISECONDS)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
 
 
